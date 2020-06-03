@@ -1,5 +1,5 @@
-function say(arg: Number) {
-  console.log(arg, 'hello typeScript')
-}
+import { play } from "../utils/test"
 
-say(2)
+const plays = require('../utils/test')
+plays.play('羽毛球')
+plays.alertName()

@@ -1,6 +1,7 @@
 'use strict'
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
+
 module.exports = {
   devtool: "cheap-module-eval-source-map",
   devServer: {
