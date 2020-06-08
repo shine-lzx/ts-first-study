@@ -59,6 +59,8 @@ interface Fish {
   swim(): void
 }
 
+interface Dog {}
+
 let catKind: Cat = {
   name: 'cheshire Cat',
   run() {
@@ -73,8 +75,30 @@ let fishKind: Fish = {
   },
 }
 
-function getName(animal: Cat | Fish) {
-  console.log(animal.name)
+function getName(animal: Cat | Fish | Dog) {
+  ;(animal as Fish).swim()
 }
 
-getName(catKind)
+getName(fishKind)
+
+// 将一个父类断言为更加具体的子类
+class ApiError extends Error {
+  code: number = 0
+}
+
+class HttpError extends Error {
+  statusCode: number = 200
+}
+
+let isApiError = (error: Error) => {
+  if (typeof (error as ApiError).code === 'number') {
+    return true
+  }
+  return false
+}
+
+let estimate = (flag: boolean) => {
+  flag ? console.log('200') : console.log('99999')
+}
+
+estimate(isApiError(new ApiError())) // '200'

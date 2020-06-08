@@ -21,6 +21,10 @@ module.exports = {
     filename: 'bundle.[hash:6].js',
   },
 
+  stats: {
+    depth: true
+  },
+
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
   },
