@@ -1,7 +1,9 @@
 'use strict'
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
-
+function detailPath (detail) {
+  return path.resolve(__dirname, detail)
+}
 module.exports = {
   devtool: "cheap-module-eval-source-map",
   devServer: {
@@ -15,7 +17,7 @@ module.exports = {
   entry: './src/index.ts',
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: detailPath('dist'),
     filename: 'bundle.[hash:6].js',
   },
 
@@ -25,8 +27,11 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: 'index.html'
+      title: 'TS',
+      template: detailPath('./public/index.html'),
+      filename: 'index.html',
+      favicon: detailPath('./public/favicon.ico'),
+      inject: true,
     })
   ],
 
