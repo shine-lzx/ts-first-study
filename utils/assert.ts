@@ -1,3 +1,4 @@
+// 断言
 interface Cat {
   name: string
   run(): void
