@@ -128,12 +128,194 @@
 
 // //---------------------------------
 
-import { getCacheData } from '../utils/genericity'
+// import { getCacheData } from '../utils/genericity'
 
-interface Cat {
-  name: string
-  run(): void
+// interface Cat {
+//   name: string
+//   run(): void
+// }
+
+// const tom = getCacheData<Cat>('tom')
+// tom.run()
+
+/*
+import { name, getName, Animal, Directions, Options } from 'foo'
+
+console.log(name)
+let myName = getName()
+let cat = new Animal('Tom')
+let directions = [
+  Directions.Up,
+  Directions.Down,
+  Directions.Left,
+  Directions.Right,
+]
+let options: Options = {
+  data: {
+    name: 'foo',
+  },
 }
 
-const tom = getCacheData<Cat>('tom')
-tom.run()
+*/
+
+// let b: Boolean = new Boolean(1);
+// let e: Error = new Error('Error occurred');
+// let d: Date = new Date();
+// let r: RegExp = /[a-z]/;
+
+// let body: HTMLElement = document.body;
+// let allDiv: NodeList = document.querySelectorAll('div');
+
+// console.log(body)
+
+// import $ from 'jquery'
+
+// console.log($('#app'))
+
+// type Name = string;
+// type NameResolver = () => string;
+// type NameOrResolver = Name | NameResolver;
+// function getName(n: NameOrResolver): Name {
+//     if (typeof n === 'string') {
+//         return n;
+//     } else {
+//         return n();
+//     }
+// }
+
+// console.log(getName('6'))
+
+class Animal {
+  public readonly name: string
+  protected constructor(name: string) {
+    this.name = name
+  }
+
+  public run(runType: string) {
+    console.log(this.name, runType)
+  }
+
+  static life(lifeStyle: string) {
+    console.log('name', this.name)
+    console.log(this.name, lifeStyle)
+  }
+}
+
+class Cat extends Animal {
+  public constructor(name: string) {
+    super(name)
+  }
+
+  eat(foods: string) {
+    console.log(this.name, 'eat', foods)
+  }
+}
+
+new Cat('🐱').eat('🐟')
+new Cat('bird').run('fly')
+Animal.life('6666')
+
+// 抽象类是不允许被实例化的
+// 抽象类中的抽象方法【必须】被子类实现
+abstract class Person {
+  public name: string
+  public constructor(name: string) {
+    this.name = name
+  }
+
+  abstract sayHi(msg: string): string
+}
+
+class Shine extends Person {
+  constructor(name: string) {
+    super(name)
+  }
+
+  sayHi(msg: string): string {
+    console.log(this.name, 'speek', msg)
+    return this.name
+  }
+}
+
+new Shine('lzx').sayHi('wdnmd')
+
+interface Alarm {
+  alert(arg: string): string
+}
+
+class Door {}
+
+class SecurityDoor extends Door implements Alarm {
+  alert(voice: string): string {
+    console.log(voice)
+    return voice
+  }
+}
+
+new SecurityDoor().alert('didi')
+
+interface PlaySport {
+  play(plays: string): string
+}
+
+interface Eat {
+  eatFoods(foods: string): string
+}
+
+// 接口继承接口（此处继承【多个】类）
+interface Name extends Eat, PlaySport {
+  name(name: string): string
+}
+
+// 类实现接口（此处【实现】多个接口）
+class Lzx implements Name, Eat, PlaySport {
+  a: number
+  b: number
+  c: number
+  constructor(a: number, b: number, c: number) {
+    this.a = a
+    this.b = b
+    this.c = c
+  }
+
+  name(name: string): string {
+    return name
+  }
+
+  eatFoods(foods: string): string {
+    return foods
+  }
+
+  play(plays: string): string {
+    return plays
+  }
+}
+
+// 接口继承类
+interface You extends Lzx {
+  z: string
+}
+
+let people = new Lzx(1, 2, 3)
+console.log(people)
+console.log(people.eatFoods('meat'))
+
+let special: You = {
+  a: 1,
+  b: 2,
+  c: 3,
+  z: '666666',
+  name(name: string): string {
+    return name
+  },
+
+  eatFoods(foods: string): string {
+    return foods
+  },
+
+  play(plays: string): string {
+    return plays
+  },
+}
+
+console.log(special)
