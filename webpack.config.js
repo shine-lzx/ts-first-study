@@ -14,7 +14,7 @@ module.exports = {
     port: 8080
   },
 
-  entry: './src/index.ts',
+  entry: './src/main.ts',
 
   output: {
     path: detailPath('dist'),

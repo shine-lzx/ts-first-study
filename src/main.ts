@@ -4,6 +4,8 @@
 // // handle.play('羽毛球')
 // // handle.alertName()
 
+import { type } from 'jquery'
+
 // let moreType: string | number
 
 // moreType = 666
@@ -319,3 +321,129 @@ let special: You = {
 }
 
 console.log(special)
+
+function createArray<T>(length: number, value: T): Array<T> {
+  let result: T[] = []
+  for (let i = 0; i < length; i++) {
+    result[i] = value
+  }
+  return result
+}
+createArray(3, 'x') // ['x', 'x', 'x']
+
+function swap<T, U>(tuple: [T, U]): [U, T] {
+  return [tuple[1], tuple[0]]
+}
+
+swap([7, 'seven']) // ['seven', 7]
+
+interface L {
+  length: number
+}
+
+function MyArr<T extends L>(arg: T): T {
+  console.log('arg', arg.length)
+  return arg
+}
+
+MyArr([1, 2, 3, 4])
+
+// 泛型类
+class Game<T> {
+  gameOne: T
+  constructor(gameName: T) {
+    this.gameOne = gameName
+  }
+
+  playGame<T>() {
+    console.log('playGame', this.gameOne)
+  }
+}
+
+new Game<string>('我的起源').playGame()
+
+// 合并类型
+// interface Start {
+//   name: string,
+//   age: number
+// }
+
+// interface Start {
+//   name: number,
+//   age: number
+// }
+
+enum Color {
+  Red = 0,
+  Green = '66666',
+  Blue = 2,
+}
+let c: string = Color[0]
+console.log(c)
+
+interface U {
+  [props: string]: string
+  name: string
+}
+
+let init: U = {
+  name: '123',
+  age: '18',
+  sex: '男',
+}
+
+console.log(init)
+
+// class Obj {
+//   name: string
+//   constructor(name: string) {
+//     this.name = name
+//   }
+//   msg(): void {}
+// }
+
+// let one = new Obj('lzx')
+// let two = { ...one }
+// two.msg()
+
+// interface SearchFun {
+//   (keyWord: string, num: string): boolean
+// }
+
+// let handleSearch: SearchFun
+// handleSearch = function (keyWord: string, num: string) {
+//   let result = keyWord.search(num)
+//   return result > -1
+// }
+
+// handleSearch('搜索', '5')
+
+interface ReadonlyArray {
+  year: string
+  // readonly [index: number]: string
+}
+
+interface interfaceClass extends ReadonlyArray {
+  time: string
+}
+
+let three = <interfaceClass>{
+  year: '2020',
+  time: '0611',
+}
+
+console.log('three', three)
+
+// arr[1] = '2' // error
+// 索引签名: 支持字符串和数字两种索引签名, 索引签名可以设置为只读
+class Clock implements interfaceClass {
+  year: string
+  time: string
+  constructor(year: string, time: string) {
+    this.year = year
+    this.time = time
+    console.log(year, time)
+  }
+}
+
+new Clock('2020', '0611')
