@@ -34,8 +34,15 @@ function heavyLoad(a?: number, b?: number, c?: number, d?: any) {
 
 // 可实例化
 interface CallMeWithNewToGetString {
-  
   new (): string
 }
 
-export { handlePrint, handlePrintTwo, heavyLoad, CallMeWithNewToGetString }
+function fb(index: number): number {
+  if (index <= 2) {
+    return 1
+  } else {
+    return fb(index - 1) + fb(index - 2)
+  }
+}
+
+export { handlePrint, handlePrintTwo, heavyLoad, CallMeWithNewToGetString, fb }

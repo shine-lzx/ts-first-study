@@ -52,7 +52,7 @@ win.helloWorld()
 // Math.seedrandom('3.1415926') //TODO Uncaught TypeError: Cannot read property 'seedrandom' of undefined???
 
 /**函数相关 */
-import { heavyLoad, CallMeWithNewToGetString } from './Test/fun/index'
+import { heavyLoad, CallMeWithNewToGetString, fb } from './Test/fun/index'
 // let funOne = heavyLoad(1, 2)
 // console.log('funOne', funOne)
 console.log(heavyLoad(1))
@@ -64,3 +64,6 @@ console.log(heavyLoad(1, 2, 3, 4))
 // declare const F: CallMeWithNewToGetString
 // const instantiation = new F()
 // console.log(instantiation) //TODO F is not defined???
+
+let fbs = fb(20)
+console.log(fbs)
