@@ -2,9 +2,9 @@
   "compilerOptions": {
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation 启用增量编译*/
-    "target": "es6",                          /* Specify ECMAScript target version:(指定ECMAScript目标版本) 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
+    "target": "es5",                          /* Specify ECMAScript target version:(指定ECMAScript目标版本) 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
     "module": "commonjs",                     /* Specify module code generation(指定模块代码生成): 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
-    // "lib": [],                             /* Specify library files to be included in the compilation. (指定要包含在编译中的库文件)*/
+    "lib": ["es6", "dom"],                             /* Specify library files to be included in the compilation. (指定要包含在编译中的库文件)*/
     // "allowJs": true,                       /* Allow javascript files to be compiled. (允许编译javascript文件)*/
     // "checkJs": true,                       /* Report errors in .js files. (报告.js文件中的错误。)*/
     // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. (指定JSX代码生成:‘preserve’、‘response -native’或‘react’。)*/
