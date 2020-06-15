@@ -3,6 +3,19 @@
  * 然后typescript就会根据这个类型申明文件对该js进行类型验证。 */
 
 const version = "1.0.0";
-const getName = (arg) => {
-  return arg
+
+function fn () {
+  console.log(this)
 }
+
+function bind (callback, context) {
+  context = context || window;
+  //把callback方法中的this预先处理为context
+  return function () {
+    callback.call(context)
+  }
+}
+
+// fn.bind(obj, 100, 200)
+
+export { fn, bind }
