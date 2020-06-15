@@ -103,6 +103,4 @@ try {
 console.log('myObj', myObj)
 
 console.log(add(123))
-let add123 = add(123)
-console.log(add123(456))
 console.log(add(123)(456))

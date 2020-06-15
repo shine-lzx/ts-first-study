@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/shine-lzx/ts-first-study#readme",
   "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
     "@types/jquery": "^3.3.38",
     "cross-env": "^7.0.2",
     "html-webpack-plugin": "^4.0.4",

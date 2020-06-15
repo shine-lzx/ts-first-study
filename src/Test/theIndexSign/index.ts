@@ -35,4 +35,15 @@ const myObj: any = {}
 // 柯里化
 let add = (x: number) => (y: number) => x + y
 
-export { myObj, add }
+function currying(fn: number) {
+  let allArgs: Array<any>
+  return function next() {
+    let args = [].slice.call(arguments)
+    if (args.length > 0) {
+      allArgs = allArgs.concat(args)
+      return next
+    }
+  }
+}
+
+export { myObj, add, currying }
