@@ -45,4 +45,16 @@ function fb(index: number): number {
   }
 }
 
-export { handlePrint, handlePrintTwo, heavyLoad, CallMeWithNewToGetString, fb }
+// 泛型箭头函数定义
+const printList = <T>(items: T): T => {
+  return items
+}
+
+export {
+  handlePrint,
+  handlePrintTwo,
+  heavyLoad,
+  CallMeWithNewToGetString,
+  fb,
+  printList,
+}
