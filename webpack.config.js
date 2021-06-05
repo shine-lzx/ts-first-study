@@ -1,17 +1,30 @@
 'use strict'
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require('path');
-function detailPath (detail) {
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+function detailPath(detail) {
   return path.resolve(__dirname, detail)
 }
+const WebpackBar = require('webpackbar')
+
 module.exports = {
-  devtool: "cheap-module-eval-source-map",
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: "./dist",
-    stats: "errors-only",
+    contentBase: './dist',
+    stats: 'errors-only',
     compress: false,
-    host: "localhost",
-    port: 8080
+    host: 'localhost',
+    port: 8080,
+    open: true,
+    proxy: {
+      '/fdzm/': {
+        target: 'http://192.168.200.248:8100/fdzm/',
+        changeOrigin: true,
+        cookieDomainRewrite: 'localhost',
+        pathRewrite: {
+          '^/fdzm/': '',
+        },
+      },
+    },
   },
 
   entry: './src/main.ts',
@@ -22,11 +35,11 @@ module.exports = {
   },
 
   stats: {
-    depth: true
+    depth: true,
   },
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
 
   plugins: [
@@ -36,14 +49,20 @@ module.exports = {
       filename: 'index.html',
       favicon: detailPath('./public/favicon.ico'),
       inject: true,
-    })
+    }),
+    new WebpackBar({
+      name: '🚀',
+      color: 'darkblue',
+    }),
   ],
 
   module: {
-    rules: [{
-      test: /.tsx?$/,
-      use: "ts-loader",
-      exclude: /node_modules/
-    }]
-  }
+    rules: [
+      {
+        test: /.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
 }

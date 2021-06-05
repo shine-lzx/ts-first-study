@@ -267,6 +267,157 @@ const x = extend({ a: 'hello' }, { b: 42 })
 
 // window.helloWorld()
 
-const simple: (foo: number) => string = (foo) => foo.toString()
+// const simple: (foo: number) => string = (foo) => foo.toString()
 
-console.log(simple(1))
+// console.log(simple(1))
+
+// interface Foo {
+//   bar: number
+//   bas: string
+// }
+
+// const foo = {} as Foo
+// foo.bar = 1
+// foo.bas = 'string'
+
+// interface A {
+//   x: number
+// }
+
+// interface B {
+//   y: string
+// }
+
+// // in 操作符可以安全的检查一个对象上是否存在一个属性，它通常也被作为类型保护使用：
+// function doStuff(q: A | B) {
+//   if ('x' in q) {
+//     console.log('q', q)
+//     // q: A
+//   } else {
+//     console.log('q2', q)
+//     // q: B
+//   }
+// }
+
+// doStuff({ x: 1 })
+
+// type msg = 'error' | 'success'
+
+// const tips = (message: msg): msg => {
+//   return message
+// }
+
+// console.log(tips('error'))
+
+// 用于创建字符串列表映射至 `K: V` 的函数
+// function strEnum<T extends string>(o: Array<T>): { [K in T]: K } {
+//   return o.reduce((res, key) => {
+//     res[key] = key
+//     return res
+//   }, Object.create(null))
+// }
+
+// // 创建 K: V
+// const Direction = strEnum(['North', 'South', 'East', 'West'])
+
+// type Direction = keyof typeof Direction
+
+// function pluck<T, K extends keyof T>(o: T, names: Array<K>): T[K][] {
+//   return names.map((n) => o[n])
+// }
+
+// // 一个柯里化函数
+// let add = (x: number) => (y: number) => x + y
+
+// // 简单使用
+// add(123)(456)
+// console.log('add(123)(456): ', add(123)(456))
+
+// // 部分应用
+// let add123 = add(123)
+// console.log('add123: ', add123)
+
+// // fully apply the function
+// add123(456)
+
+// interface Foo {
+//   bar: number
+//   bas: string
+// }
+
+// interface FooT extends Foo {
+//   name: string | unknown
+// }
+
+// let foo = {} as FooT
+// foo.bar = 123
+// foo.bas = 'Hello World'
+// foo.name = 123
+
+class Foo<T> {
+  name: T
+  age: T
+  constructor(name: T, age: T) {
+    this.name = name
+    this.age = age
+  }
+
+  set bar(name: T) {
+    this.name = name
+  }
+
+  public someMethod() {
+    console.log('name', this.name)
+    // ..code
+  }
+
+  public someUtility() {
+    // .. code
+  }
+}
+
+let info = new Foo('shine', '18')
+info.someMethod()
+
+type Shine = {
+  name: string
+  age: number
+}
+
+type S1 = {
+  [p in keyof Shine]: any
+}
+
+interface S2 {
+  name: string
+  age: number
+}
+
+let prnts: Partial<S1> = { name: 6 }
+console.log('prnts: ', prnts)
+
+type petsGroup = 'dog' | 'cat' | 'fish'
+interface IPetInfo {
+  name: string
+  age: number
+}
+
+// 会将petsGroup中的所有【属性值】都转换为IPetInfo类型
+// type printsTwo = Record<Shine, S2>
+
+type IPets = Record<petsGroup, IPetInfo>
+
+const animalsInfo: IPets = {
+  dog: {
+    name: 'dogName',
+    age: 2,
+  },
+  cat: {
+    name: 'catName',
+    age: 3,
+  },
+  fish: {
+    name: 'fishName',
+    age: 5,
+  },
+}
