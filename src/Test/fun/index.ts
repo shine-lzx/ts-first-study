@@ -50,6 +50,29 @@ const printList = <T>(items: T): T => {
   return items
 }
 
+// const foo = <T,>(x: T): T => x;
+
+// const foo = <T extends {}>(x: T): T => x;
+
+// const foo = <T extends Record<string, unknown>>(x: T): T => x;
+
+// const foo: <T>(x: T) => T = x => x;
+
+// const identity = <T,>(arg: T): T => {
+//     console.log(arg);
+//     return arg;
+// };
+
+// const renderAuthorize = <T>(Authorized: T): ((currentAuthority: CurrentAuthorityType) => T) => (
+//     currentAuthority: CurrentAuthorityType,
+//   ): T => {
+//      return
+//  };
+
+function a<v1, v2>(v1: string, v2: string): v1 & v2
+
+function a() {}
+
 export {
   handlePrint,
   handlePrintTwo,
